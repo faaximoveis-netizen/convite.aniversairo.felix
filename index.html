@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convite • Aniversário</title>
+<style>
+:root{--gold:#e8bd69;--cream:#fff4df;--red:#a71922;--dark:#100d0b}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 50% 0%,#3b1712,#100d0b 58%);color:var(--cream);font-family:Georgia,'Times New Roman',serif;min-height:100vh}
+button,a{font:inherit}
+.opening{position:fixed;inset:0;z-index:10;display:grid;place-items:center;background:radial-gradient(circle at center,#572019,#100908 72%);padding:24px;transition:opacity .8s,visibility .8s}
+.opening.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.open-card{text-align:center;max-width:480px;width:100%}
+.eyebrow{font:700 .75rem/1.4 Arial,sans-serif;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+.open-card h1{font-size:clamp(2rem,8vw,4rem);line-height:1;margin:18px 0 12px}
+.open-card p{font:1rem/1.6 Arial,sans-serif;color:#ead9c5}
+.bottle-button{position:relative;display:block;margin:24px auto 18px;width:130px;height:245px;border:0;background:transparent;cursor:pointer;transition:transform .25s}
+.bottle-button:hover{transform:rotate(-5deg) scale(1.04)}
+.bottle{position:absolute;left:32px;top:28px;width:66px;height:194px;border-radius:17px 17px 13px 13px;background:linear-gradient(90deg,#59320d,#c68a25 28%,#8d5b15 70%,#3e250b);border:2px solid #e2b650;box-shadow:inset 7px 0 8px #f3c35b44,0 15px 35px #0008}
+.bottle:before{content:"";position:absolute;width:25px;height:43px;left:18px;top:-35px;border-radius:6px 6px 2px 2px;background:linear-gradient(90deg,#4b2909,#c58b26,#51300c);border:2px solid #c89b45}
+.bottle:after{content:"BUDWEISER";position:absolute;left:5px;right:5px;top:78px;padding:9px 0;background:#f8e8d0;color:#a71922;border:2px solid #a71922;border-radius:50%;font:900 8px Arial,sans-serif;letter-spacing:.5px;transform:rotate(-8deg)}
+.cap{position:absolute;top:0;left:49px;width:34px;height:13px;background:#c9c9bd;border-radius:4px 4px 1px 1px;box-shadow:0 0 0 2px #777}
+.tap-hint{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:13px 22px;border-radius:999px;font:700 .75rem Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+main{max-width:900px;margin:auto;padding:28px 20px 70px}
+.hero{text-align:center;padding:45px 0 28px}
+.hero .topline{font:700 .72rem Arial,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-size:clamp(3rem,10vw,6.5rem);line-height:.9;margin:18px 0;color:var(--cream);text-shadow:0 5px 25px #0008}
+.hero h1 span{display:block;color:var(--gold);font-size:.56em;letter-spacing:.14em;margin-top:18px}
+.rule{width:100px;height:2px;background:var(--gold);margin:26px auto}
+.intro{font:1.05rem/1.8 Arial,sans-serif;color:#e6d8c8;max-width:570px;margin:auto}
+.photo-frame{max-width:520px;margin:30px auto;border:1px solid #b28b4e;padding:7px;background:#20120f;box-shadow:0 20px 60px #0007}
+.photo-frame img{width:100%;display:block;max-height:580px;object-fit:cover;object-position:center 30%}
+.details{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:30px 0}
+.detail{border:1px solid #7b552e;background:#201510;padding:22px 12px;text-align:center}
+.detail .label{font:700 .65rem Arial,sans-serif;letter-spacing:.2em;color:var(--gold);text-transform:uppercase}
+.detail strong{display:block;font-size:1.25rem;margin-top:10px}
+.location{text-align:center;padding:28px 0}
+.location p{font:1rem/1.7 Arial,sans-serif;color:#e6d8c8}
+.cta{display:inline-block;margin-top:10px;background:var(--gold);color:#21120c;text-decoration:none;padding:15px 24px;border-radius:3px;font:800 .75rem Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.music{text-align:center;border-top:1px solid #64462b;margin-top:36px;padding-top:28px}
+.music p{font: .9rem/1.6 Arial,sans-serif;color:#d7c5b2}
+.music a{color:var(--gold)}
+footer{text-align:center;color:#a78e75;font: .72rem Arial,sans-serif;letter-spacing:.12em;padding:35px 0 0}
+@media(max-width:600px){.details{grid-template-columns:1fr}.detail{padding:16px}.hero{padding-top:32px}.photo-frame img{max-height:480px}}
+</style>
+</head>
+<body>
+<section class="opening" id="opening" aria-label="Abrir convite">
+  <div class="open-card">
+    <div class="eyebrow">Você foi convocado</div>
+    <h1>Antes da festa…<br><span style="color:#e8bd69">abre uma Bud!</span></h1>
+    <p>Toque na garrafa para abrir o convite.<br>Depois é só preparar a resenha. 🍻</p>
+    <button class="bottle-button" id="openBtn" aria-label="Abrir a garrafa e revelar o convite">
+      <span class="cap"></span><span class="bottle"></span>
+    </button>
+    <div class="tap-hint">Toque para abrir</div>
+  </div>
+</section>
+<main>
+  <header class="hero">
+    <div class="topline">Anota aí e não marca nada por cima</div>
+    <h1>É dia de<br>FESTA!<span>ANIVERSÁRIO</span></h1>
+    <div class="rule"></div>
+    <p class="intro">Mais um ano de história merece uma comemoração daquelas: música boa, bebida gelada e gente querida. Quero você lá pra fazer parte dessa resenha!</p>
+  </header>
+  <div class="photo-frame"><img src="foto-convite.jpeg" alt="Foto do aniversariante vestido a caráter"></div>
+  <section class="details" aria-label="Detalhes da festa">
+    <div class="detail"><div class="label">Data</div><strong>14 de novembro</strong></div>
+    <div class="detail"><div class="label">Horário</div><strong>Às 16 horas</strong></div>
+    <div class="detail"><div class="label">Missão</div><strong>Chegar pra festar 🍻</strong></div>
+  </section>
+  <section class="location">
+    <div class="eyebrow">O ponto de encontro</div>
+    <h2 style="font-size:2rem;margin:12px 0">Te espero lá!</h2>
+    <p>Abra o mapa para ver o local certinho.<br>Não vale dizer que se perdeu!</p>
+    <a class="cta" href="https://maps.app.goo.gl/uYMsW3aK5YvFqHZB8" target="_blank" rel="noopener">📍 Ver localização</a>
+  </section>
+  <section class="music">
+    <div class="eyebrow">Trilha sonora oficial</div>
+    <h2>“Zuar e Beber” — Henrique e Diego</h2>
+    <p>O YouTube pode bloquear a reprodução em segundo plano ou exigir interação. Dê play aqui e aumente o som!</p>
+    <div style="max-width:560px;margin:18px auto">
+      <iframe width="100%" height="200" src="https://www.youtube-nocookie.com/embed/gfCQUktVAeY?autoplay=0&playsinline=1" title="Zuar e Beber - Henrique e Diego" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <p><a href="https://www.youtube.com/watch?v=gfCQUktVAeY" target="_blank" rel="noopener">Abrir música no YouTube</a></p>
+  </section>
+  <footer>UMA BOA FESTA COMEÇA COM BOAS COMPANHIAS • 14.11</footer>
+</main>
+<script>
+const opening=document.getElementById('opening');
+document.getElementById('openBtn').addEventListener('click',()=>{
+  opening.classList.add('hidden');
+  document.body.style.overflow='auto';
+});
+</script>
+</body>
+</html>
